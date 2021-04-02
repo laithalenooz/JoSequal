@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+
 Auth::routes();
 
 Route::middleware('auth')->group(function (){
@@ -27,4 +29,10 @@ Route::middleware('auth')->group(function (){
     Route::get('/post/destroy/{id}', [App\Http\Controllers\UserController::class, 'destroyPost'])->name('delete.post');
     Route::post('/post', [App\Http\Controllers\HomeController::class, 'store'])->name('post.create');
     Route::get('/post/{id}', [App\Http\Controllers\HomeController::class, 'showSinglePost'])->name('view.post');
+    Route::get('reset/server', function () {
+        Artisan::call('migrate:fresh');
+        Artisan::call('optimize');
+        return redirect('/');
+
+    });
 });

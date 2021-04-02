@@ -12,6 +12,8 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable, Commenter;
 
+    protected $table = 'josequal.users';
+
     /**
      * The attributes that are mass assignable.
      *

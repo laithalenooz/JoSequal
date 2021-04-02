@@ -10,6 +10,8 @@ class Post extends Model
 {
     use HasFactory, Commentable;
 
+    protected $table = 'josequal.posts';
+
     protected $fillable = [
         'title', 'description', 'avatar', 'user_id'
     ];
